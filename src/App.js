@@ -6,17 +6,22 @@ import Tv from "./components/TV/Tv";
 import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
 import Banner from "./components/Banner/Banner";
+import "./api";
 function App() {
   return (
     <div className="App">
       <Router>
         <Header />
-        <Banner />
         <Switch>
           <Route path="/" exact>
+            <Banner />
+
             <Home />
           </Route>
+
           <Route path="/tv">
+            <Banner />
+
             <Tv />
           </Route>
           <Route path="/search">

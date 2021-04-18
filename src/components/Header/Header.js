@@ -4,7 +4,7 @@ import styled from "styled-components";
 import avatar from "../../assets/netflix-avatar.png";
 import logo from "../../assets/netflix-logo2.png";
 function Header(props) {
-  const [show, handleShow] = useState(false);
+  const [show, handleShow] = useState(true);
   const pathname = props.location.pathname;
   console.log(pathname);
   const transitionNavBar = () => {
@@ -55,7 +55,7 @@ const HeaderContainer = styled.div`
   transition-timing-function: ease-in;
   transition: all 0.5s;
   background-color: #111;
-  opacity: ${(props) => (props.current ? "1" : "0.5")};
+  opacity: ${(props) => (props.current ? "1" : "0.7")};
 `;
 
 const HeaderContent = styled.div`
