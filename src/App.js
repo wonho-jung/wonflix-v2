@@ -15,13 +15,11 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Banner />
-
             <Home />
           </Route>
 
           <Route path="/tv">
             <Banner />
-
             <Tv />
           </Route>
           <Route path="/search">

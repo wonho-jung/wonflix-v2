@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MoivesApi } from "../../api";
 import Loading from "../Loading/Loading";
-import HomeRow from "./HomeRow";
+import Poster from "./Poster";
 
 function Home() {
   const [netFlix, setNetFlix] = useState([]);
@@ -37,10 +37,10 @@ function Home() {
         <Loading />
       ) : (
         <HomeContainer>
-          <HomeRow title="NETFLEX ORIGINALS" netflixOriginals={netFlix} />
-          <HomeRow title="Now Playing" nowPlaying={nowPlaying} />
-          <HomeRow title="Upcoming Movies" upComing={upComing} />
-          <HomeRow title="Popular Movies" popular={popular} />
+          <Poster title="NETFLEX ORIGINALS" data={netFlix} />
+          <Poster title="Now Playing" data={nowPlaying} />
+          <Poster title="Upcoming Movies" data={upComing} />
+          <Poster title="Popular Movies" data={popular} />
         </HomeContainer>
       )}
     </>
