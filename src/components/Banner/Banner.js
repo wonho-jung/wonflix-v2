@@ -53,7 +53,9 @@ function Banner(props) {
       ) : (
         <BannerContainer
           style={{
-            backgroundImage: `url("https://image.tmdb.org/t/p/original/${banner?.backdrop_path}")`,
+            backgroundImage: banner
+              ? `url("https://image.tmdb.org/t/p/original/${banner?.backdrop_path}")`
+              : `url("url("https://image.tmdb.org/t/p/original/srYya1ZlI97Au4jUYAktDe3avyA.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center center",
           }}
