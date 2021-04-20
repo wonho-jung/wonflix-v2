@@ -7,6 +7,7 @@ import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
 import Banner from "./components/Banner/Banner";
 import "./api";
+import Detail from "./components/Detail/Detail";
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,12 @@ function App() {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/movie/:id">
+            <Detail />
+          </Route>
+          <Route path="/show/:id">
+            <Detail />
           </Route>
         </Switch>
       </Router>
