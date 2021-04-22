@@ -86,7 +86,8 @@ const Nav = styled.ul`
   transform: translate(0, 45%);
 `;
 const Item = styled.li`
-  /* margin: 0 10px; */
+  cursor: pointer;
+
   width: 80px;
   height: 50px;
   text-align: center;

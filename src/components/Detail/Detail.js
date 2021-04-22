@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { MoivesApi, tvApi } from "../../api";
 import Loading from "../Loading/Loading";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 function Detail(props) {
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState(null);
@@ -100,6 +103,30 @@ function Detail(props) {
                 </Item>
               </ItemContainer>
               <Overview> {results.data.overview} </Overview>
+
+              {/* <VideoTitle>Trailer</VideoTitle> */}
+
+              <Video>
+                <Carousel autoPlay>
+                  {results.data.videos.results.length > 0 ? (
+                    results.data.videos.results.map((Video, index) => (
+                      <div>
+                        <iframe
+                          key={index}
+                          width="100%"
+                          height="400px"
+                          src={`https://www.youtube.com/embed/${Video.key}`}
+                          allowFullScreen
+                          frameborder="0"
+                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <VideoError>No Trailer sorry :( </VideoError>
+                  )}
+                </Carousel>
+              </Video>
             </Data>
           </Content>
         </DetailContanier>
@@ -126,13 +153,14 @@ const Backdrop = styled.div`
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
-  filter: blur(1.5px);
-  opacity: 0.5;
+  filter: blur(2px);
+  opacity: 0.8;
   z-index: 0;
 `;
 const Content = styled.div`
+  background: #111;
+  opacity: 0.95;
   margin-top: 50px;
-  border: 5px solid red;
   display: flex;
   width: 100%;
   position: relative;
@@ -141,10 +169,11 @@ const Content = styled.div`
   @media only screen and (max-width: 600px) {
     flex-direction: column;
     justify-content: center;
+    padding: 10px;
   }
 `;
 const Cover = styled.div`
-  width: 40%;
+  width: 45%;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
@@ -155,7 +184,7 @@ const Cover = styled.div`
   }
 `;
 const Data = styled.div`
-  width: 60%;
+  width: 55%;
   margin-left: 20px;
   @media only screen and (max-width: 600px) {
     margin-top: 50px;
@@ -168,6 +197,9 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.h3`
   font-size: 32px;
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 const Imdb = styled.button`
   background-color: rgb(245, 197, 24);
@@ -187,18 +219,32 @@ const Imdb = styled.button`
 const ItemContainer = styled.div`
   margin: 20px 0;
 `;
-const Item = styled.span``;
+const Item = styled.span`
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
+  }
+`;
 
 const Divider = styled.span`
-  margin: 0 10px;
+  margin: 0 5px;
 `;
 const Overview = styled.p`
   font-size: 13px;
   opacity: 0.9;
   line-height: 1.5;
-  width: 50%;
+  width: 80%;
   margin-bottom: 20px;
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
+`;
+const VideoTitle = styled.h5`
+  font-size: 20px;
+`;
+const Video = styled.div`
+  margin-top: 20px;
+  max-width: 600px;
+`;
+const VideoError = styled.h3`
+  font-size: 30px;
 `;
