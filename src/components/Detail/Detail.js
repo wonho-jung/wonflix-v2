@@ -16,7 +16,6 @@ function Detail(props) {
   const parsedId = parseInt(props.match.params.id);
   console.log(isMovie);
   console.log(parsedId);
-  // console.log(id);
   const getData = async () => {
     try {
       if (isMovie) {
@@ -35,7 +34,6 @@ function Detail(props) {
   useEffect(() => {
     getData();
   }, []);
-  console.log(results?.data.backdrop_path);
   return (
     <>
       {loading ? (
@@ -102,9 +100,12 @@ function Detail(props) {
                   {results.data.vote_average}/10
                 </Item>
               </ItemContainer>
-              <Overview> {results.data.overview} </Overview>
 
-              {/* <VideoTitle>Trailer</VideoTitle> */}
+              <Overview>
+                {results?.data.overview.length > 20
+                  ? `${results.data.overview.substring(0, 300)}...`
+                  : results.data.overview}
+              </Overview>
 
               <Video>
                 <Carousel autoPlay>
@@ -232,7 +233,7 @@ const Overview = styled.p`
   font-size: 13px;
   opacity: 0.9;
   line-height: 1.5;
-  width: 80%;
+  width: 90%;
   margin-bottom: 20px;
   @media only screen and (max-width: 600px) {
     width: 100%;

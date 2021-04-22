@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import avatar from "../../assets/netflix-avatar.png";
 import logo from "../../assets/netflix-logo2.png";
 function Header(props) {
   const [show, handleShow] = useState(true);
+  const history = useHistory();
   const pathname = props.location.pathname;
   console.log(pathname);
   const transitionNavBar = () => {
@@ -22,7 +23,7 @@ function Header(props) {
     <HeaderContainer current={show}>
       <HeaderContent>
         <HeaderLeft>
-          <img src={logo} alt="" />
+          <img onClick={() => history.push("/")} src={logo} alt="" />
           <Nav>
             <Item current={pathname === "/"}>
               <Link to="/">Movie</Link>
@@ -36,7 +37,7 @@ function Header(props) {
           </Nav>
         </HeaderLeft>
         <HedaerRight>
-          <img src={avatar} alt="" />
+          <img onClick={() => history.push("/profile")} src={avatar} alt="" />
         </HedaerRight>
       </HeaderContent>
     </HeaderContainer>
@@ -64,6 +65,8 @@ const HeaderContent = styled.div`
   justify-content: space-around;
 `;
 const HeaderLeft = styled.div`
+  cursor: pointer;
+
   img {
     opacity: 1 !important;
 
@@ -73,7 +76,6 @@ const HeaderLeft = styled.div`
     width: 80px;
     object-fit: contain;
     padding-left: 20px;
-    cursor: pointer;
   }
 `;
 const Nav = styled.ul`
@@ -104,6 +106,8 @@ const Item = styled.li`
 const HedaerRight = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
+
   img {
     position: fixed;
     top: 0;
