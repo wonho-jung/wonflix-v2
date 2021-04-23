@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useHistory, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import avatar from "../../assets/netflix-avatar.png";
 import logo from "../../assets/netflix-logo2.png";
+import { selectCurrentPlan } from "../../features/userSlice";
 function Header(props) {
   const [show, handleShow] = useState(true);
   const history = useHistory();
+  const currentPlan = useSelector(selectCurrentPlan);
+
   const pathname = props.location.pathname;
   console.log(pathname);
   const transitionNavBar = () => {
@@ -23,17 +27,27 @@ function Header(props) {
     <HeaderContainer current={show}>
       <HeaderContent>
         <HeaderLeft>
-          <img onClick={() => history.push("/")} src={logo} alt="" />
+          <img
+            onClick={() =>
+              currentPlan ? history.push("/") : history.push("/profile")
+            }
+            src={logo}
+            alt=""
+          />
           <Nav>
-            <Item current={pathname === "/"}>
-              <Link to="/">Movie</Link>
-            </Item>
-            <Item current={pathname === "/tv"}>
-              <Link to="/tv">TV</Link>
-            </Item>
-            <Item current={pathname === "/search"}>
-              <Link to="/search">Search</Link>
-            </Item>
+            {currentPlan ? (
+              <>
+                <Item current={pathname === "/"}>
+                  <Link to="/">Movie</Link>
+                </Item>
+                <Item current={pathname === "/tv"}>
+                  <Link to="/tv">TV</Link>
+                </Item>
+                <Item current={pathname === "/search"}>
+                  <Link to="/search">Search</Link>
+                </Item>
+              </>
+            ) : null}
           </Nav>
         </HeaderLeft>
         <HedaerRight>

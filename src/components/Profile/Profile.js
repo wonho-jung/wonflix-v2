@@ -2,11 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import avatar from "../../assets/netflix-avatar.png";
-import { selectUser } from "../../features/userSlice";
+import { selectCurrentPlan, selectUser } from "../../features/userSlice";
 import { auth } from "../../firebase";
+import PlanScreen from "../PlanScreen/PlanScreen";
 function Profile() {
   const user = useSelector(selectUser);
+  console.log(user);
 
+  const currentPlan = useSelector(selectCurrentPlan);
+  console.log(currentPlan);
   return (
     <Container>
       <ProfileBody>
@@ -17,9 +21,11 @@ function Profile() {
           <ProfileDetail>
             <h2>{user.email}</h2>
             <ProfilePlans>
-              <h3>Plans</h3>
-
-              <button onClick={() => auth.signOut()}>Sign Out</button>
+              <h3>Plans {currentPlan && `(${currentPlan?.currentPlan})`}</h3>
+              <PlanScreen />
+              <button className="signOut" onClick={() => auth.signOut()}>
+                Sign Out
+              </button>
             </ProfilePlans>
           </ProfileDetail>
         </ProfileInfo>
@@ -72,7 +78,8 @@ const ProfilePlans = styled.div`
     border-bottom: 1px solid #282c2d;
     padding-bottom: 10px;
   }
-  button {
+  .signOut {
+    cursor: pointer;
     padding: 10px 20px;
     font-size: 1rem;
     margin-top: 5%;

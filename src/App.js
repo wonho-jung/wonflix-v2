@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
@@ -17,7 +17,6 @@ import Profile from "./components/Profile/Profile";
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
@@ -44,32 +43,28 @@ function App() {
               <Header />
               <Profile />
             </Route>
+
             <Route path="/" exact>
               <Header />
-
               <Banner />
               <Home />
             </Route>
 
             <Route path="/tv">
               <Header />
-
               <Banner />
               <Tv />
             </Route>
             <Route path="/search">
               <Header />
-
               <Search />
             </Route>
             <Route path="/movie/:id">
               <Header />
-
               <Detail />
             </Route>
             <Route path="/show/:id">
               <Header />
-
               <Detail />
             </Route>
           </Switch>
