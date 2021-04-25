@@ -10,7 +10,6 @@ function Profile() {
   console.log(user);
 
   const currentPlan = useSelector(selectCurrentPlan);
-  console.log(currentPlan);
   return (
     <Container>
       <ProfileBody>
@@ -21,7 +20,12 @@ function Profile() {
           <ProfileDetail>
             <h2>{user.email}</h2>
             <ProfilePlans>
-              <h3>Plans {currentPlan && `(${currentPlan?.currentPlan})`}</h3>
+              <h3>
+                Plans
+                {currentPlan?.currentPlan
+                  ? `(${currentPlan.currentPlan})`
+                  : " (Use this card Number: 4242 4242 4242 4242)"}
+              </h3>
               <PlanScreen />
               <button className="signOut" onClick={() => auth.signOut()}>
                 Sign Out

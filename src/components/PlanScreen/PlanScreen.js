@@ -11,28 +11,33 @@ function PlanScreen() {
   const [subscription, setSubscription] = useState(null);
   const dispatch = useDispatch();
 
+  console.log(user);
+  console.log(window.location.origin);
   useEffect(() => {
     db.collection("customers")
       .doc(user.uid)
       .collection("subscriptions")
       .get()
       .then((querySnapshot) => {
-        querySnapshot.forEach(async (subscription) => {
+        querySnapshot.forEach((subscription) => {
           setSubscription({
             role: subscription.data().role,
             current_period_end: subscription.data().current_period_end.seconds,
             current_period_start: subscription.data().current_period_start
               .seconds,
           });
-          dispatch(
-            set_CurrentPlan({
-              currentPlan: subscription.data().role,
-            })
-          );
         });
       });
   }, [user.uid]);
-  console.log(subscription);
+
+  useEffect(() => {
+    dispatch(
+      set_CurrentPlan({
+        currentPlan: subscription?.role,
+      })
+    );
+  }, [subscription]);
+
   useEffect(() => {
     db.collection("products")
       .where("active", "==", true)
@@ -59,7 +64,7 @@ function PlanScreen() {
       .collection("checkout_sessions")
       .add({
         price: priceId,
-        success_url: window.location.origin,
+        success_url: "http://localhost:3000/profile",
         cancel_url: window.location.origin,
       });
     console.log(docRef);
@@ -77,6 +82,7 @@ function PlanScreen() {
       }
     });
   };
+
   return (
     <Container>
       {subscription && (

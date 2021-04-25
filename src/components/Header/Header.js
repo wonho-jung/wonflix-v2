@@ -11,7 +11,7 @@ function Header(props) {
   const currentPlan = useSelector(selectCurrentPlan);
 
   const pathname = props.location.pathname;
-  console.log(pathname);
+  console.log(currentPlan);
   const transitionNavBar = () => {
     if (window.scrollY < 100) {
       handleShow(true);
@@ -29,14 +29,17 @@ function Header(props) {
         <HeaderLeft>
           <img
             onClick={() =>
-              currentPlan ? history.push("/") : history.push("/profile")
+              currentPlan?.currentPlan
+                ? history.push("/")
+                : history.push("/profile")
             }
             src={logo}
             alt=""
           />
           <Nav>
-            {currentPlan ? (
+            {currentPlan?.currentPlan !== undefined && (
               <>
+                {" "}
                 <Item current={pathname === "/"}>
                   <Link to="/">Movie</Link>
                 </Item>
@@ -47,7 +50,16 @@ function Header(props) {
                   <Link to="/search">Search</Link>
                 </Item>
               </>
-            ) : null}
+            )}
+            {/* <Item current={pathname === "/"}>
+              <Link to="/">Movie</Link>
+            </Item>
+            <Item current={pathname === "/tv"}>
+              <Link to="/tv">TV</Link>
+            </Item>
+            <Item current={pathname === "/search"}>
+              <Link to="/search">Search</Link>
+            </Item> */}
           </Nav>
         </HeaderLeft>
         <HedaerRight>
