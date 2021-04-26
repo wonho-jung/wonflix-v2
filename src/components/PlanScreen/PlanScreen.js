@@ -64,7 +64,7 @@ function PlanScreen() {
       .collection("checkout_sessions")
       .add({
         price: priceId,
-        success_url: "http://localhost:3000/profile",
+        success_url: `${window.location.origin}/profile`,
         cancel_url: window.location.origin,
       });
     console.log(docRef);

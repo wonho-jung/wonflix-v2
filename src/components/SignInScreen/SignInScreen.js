@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { auth, provider } from "../../firebase";
 
 function SignInScreen() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const history = useHistory();
 
   const register = (e) => {
     e.preventDefault();
@@ -19,11 +21,15 @@ function SignInScreen() {
       })
       .catch((err) => {
         alert(err.message);
-      });
+      })
+      .finally(history.push("/profile"));
   };
   const signInwithGoogle = (e) => {
     e.preventDefault();
-    auth.signInWithPopup(provider).catch((err) => alert(err.message));
+    auth
+      .signInWithPopup(provider)
+      .catch((err) => alert(err.message))
+      .finally(history.push("/profile"));
   };
   const signIn = (e) => {
     e.preventDefault();
@@ -35,7 +41,8 @@ function SignInScreen() {
       .then((authUser) => {
         console.log(authUser);
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => alert(err.message))
+      .finally(history.push("/profile"));
   };
   return (
     <Container>
