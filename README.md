@@ -1,6 +1,6 @@
 #Wonflix -v2
 
-React, Redux, axios, api building a better Movie Discovery app!
+React, Redux, axios,firebase, stripe, api building a better Movie Discovery app!
 
 ##Screen
 
@@ -8,3 +8,5 @@ React, Redux, axios, api building a better Movie Discovery app!
 -[]TV Show
 -[]Search
 -[]Detail
+-[]Login
+-[]Payment
