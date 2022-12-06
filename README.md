@@ -14,9 +14,9 @@
 
 ## Features
 
-- Get New movie data from TMDB and offer preivew with infomation about movie
-- Show TV show program with preview
-- Search the movie or TV 
+- Fetch the latest movie data from TMDB and offer a preview with details about the film
+- Fetch the latest TV show data from TMDB and offer a preview with details about the film
+- Enter the name of a movie or TV show in the search bar, and It provide you with a detailed description of the results
 - Subscribe(Premium, Basic, Standard) options to payment with Stripe
 
 
