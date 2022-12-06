@@ -5,52 +5,30 @@
 ## [Demo💥](https://subtle-jalebi-49df22.netlify.app/)
 
 ## Preview
-<img src="https://user-images.githubusercontent.com/62073233/113490736-18fc6280-949a-11eb-8e08-a2220442dc36.PNG"/>
-<img src="https://user-images.githubusercontent.com/62073233/113491063-f3705880-949b-11eb-807c-26beb47e26b5.PNG"/>
-<img width="100%" src="https://user-images.githubusercontent.com/62073233/206041426-f917bf64-e126-4173-9c70-bed46ea90dac.gif"/>
+<img src="https://user-images.githubusercontent.com/62073233/206045876-fe6f64c8-5879-4648-b9cb-7e5bf39379c5.png"/>
+<img src="https://user-images.githubusercontent.com/62073233/206045874-689be44d-0028-4014-b915-57198cc3938c.png"/>
+<img width="100%" src="https://user-images.githubusercontent.com/62073233/206046561-0226c777-bbc4-4ec1-8712-7ebd127efe93.gif"/>
+
+
+
 
 ## Features
 
-- Listen to the preview track and adjust the volume using the control
-- Search for artists or songs using the search bar
-- Get song recommendations based on your playlist
-- Select tracks to add to your existing Spotify playlist
-- Preview songs from recently played albums, new releases, top playlists, workout, mood, and other genres
+- Get New movie data from TMDB and offer preivew with infomation about movie
+- Show TV show program with preview
+- Search the movie or TV 
+- Subscribe(Premium, Basic, Standard) options to payment with Stripe
+
 
 ## Pages
 
-- Login
 - Home
+- Sign in/up
+- Movie
+- TV Show
 - Search
-- Searh detail
-- Your Library
-- Playlits
+- Payment(Stripe)
+- Detail
 
 
-## API Verbs
-getUserPlaylists          -[v] <br/>
-getMyRecentlyPlayedTracks -[v] <br/>
-getNewReleases            -[v] <br/> 
-getCategoryPlaylists      -[v] <br/>
-getCategories             -[v] <br/>
-addTracksToPlaylist       -[v] <br/> 
-getPlaylist               -[v] <br/>
-getRecommendations        -[v] <br/>
-getAlbumTracks            -[v] <br/>
-getAlbum                  -[v] <br/>
-search                    -[v] <br/>
-getCategoryPlaylists      -[v] <br/>
 
-
-#Wonflix -v2
-
-React, Redux, axios,firebase, stripe, api building a better Movie Discovery app!
-
-##Screen
-
--[]Home
--[]TV Show
--[]Search
--[]Detail
--[]Login
--[]Payment
