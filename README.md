@@ -1,6 +1,6 @@
-# Project Title
+# wonflix-v2
 
-One Paragraph of project description goes here
+React, Redux, axios,firebase, stripe, api building a better Movie Discovery app!
 
 ## Getting Started
 
