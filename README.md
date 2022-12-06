@@ -2,7 +2,7 @@
 
 
 
-## [Demo💥](https://subtle-jalebi-49df22.netlify.app/)
+## [Demo💥](https://wonflix-v2.web.app/)
 
 ## Preview
 <img src="https://user-images.githubusercontent.com/62073233/206045876-fe6f64c8-5879-4648-b9cb-7e5bf39379c5.png"/>
