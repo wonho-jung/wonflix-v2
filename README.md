@@ -1,6 +1,6 @@
 # wonflix-v2, my own Netflix :) 
 
-
+<i class="fa-brands fa-react"></i>
 
 ## [Demo💥](https://wonflix-v2.web.app/)
 
